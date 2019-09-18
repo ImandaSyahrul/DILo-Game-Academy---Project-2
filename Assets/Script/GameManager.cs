@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
 	// Pemain 1
 	public PlayerController player1; // skrip
 	private Rigidbody2D player1Rigidbody;
+	public UnityEvent onWin;
+	public UnityEvent onLose;
+	public UnityEvent onEndMatch;
 
 	// Pemain 2
 	public PlayerController player2; // skrip
@@ -61,6 +65,7 @@ public class GameManager : MonoBehaviour
 
 			// ...dan kembalikan bola ke tengah.
 			ball.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
+			
 		}
 		// Sebaliknya, jika pemain 2 menang (mencapai skor maksimal), ...
 		else if (player2.Score == maxScore)
@@ -70,6 +75,19 @@ public class GameManager : MonoBehaviour
 
 			// ...dan kembalikan bola ke tengah.
 			ball.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
+			
+
+
 		}
+	}
+
+	void Lose()
+	{
+		onLose.Invoke();
+	}
+
+	void Win()
+	{
+		onWin.Invoke();
 	}
 }

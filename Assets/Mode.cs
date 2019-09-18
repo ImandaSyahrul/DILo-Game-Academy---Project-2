@@ -14,7 +14,7 @@ public class Mode : MonoBehaviour
     void Start()
     {
 		ball.SetActive(false);
-		//Time.timeScale = 0.0f;
+		Time.timeScale = 1.0f;
 		playerControl = player2.GetComponent<PlayerController>();
     }
 

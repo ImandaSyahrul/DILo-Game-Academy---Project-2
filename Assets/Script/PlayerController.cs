@@ -76,13 +76,19 @@ public class PlayerController : MonoBehaviour
 		//Jika player main dengan bot(Bot masih sederhana)
 		else
 		{
+			float botSpeed = speed;
+			if (ball.transform.position.x < -10)
+			{
+				botSpeed = speed - 5;
+			}
+			else botSpeed = speed;
 			if (ball.transform.position.y > this.gameObject.transform.position.y)
 			{
-				velocity.y = speed;
+				velocity.y = botSpeed;
 			}
 			else if (ball.transform.position.y < this.gameObject.transform.position.y)
 			{
-				velocity.y = -speed;
+				velocity.y = -botSpeed;
 			}
 			else
 			{
